@@ -1,5 +1,5 @@
 import json
-from flask import Flask, request
+from flask import Flask, request, render_template
 from pymongo import MongoClient
 
 app = Flask(__name__)
@@ -8,8 +8,16 @@ db = MongoClient('db')
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
+def root():
+    # ugly static file serving :-)
+    with open('index.html', 'r') as f:
+        return f.read()
+
+@app.route('/frontend.js')
+def js():
+    # ugly static file serving :-)
+    with open('frontend.js', 'r') as f:
+        return f.read()
 
 
 @app.route('/api/students/', methods=['POST', 'GET'])
