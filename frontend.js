@@ -1,5 +1,5 @@
 $('document').ready(function() {
-  var API_URL = 'http://127.0.0.1:8000/api/students/'
+  var API_URL = '/api/students/'
 
   var round = function(x) {
     return Math.round(x * 100) / 100;
